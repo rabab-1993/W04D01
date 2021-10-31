@@ -24,6 +24,10 @@ class ToDo extends React.Component {
     }
   };
 
+deleteList = (id) => {
+ this.setState({todos: this.state.todos.filter((todo) => todo.id !== id)})
+}
+
   render() {
     return (
       <>
@@ -33,8 +37,9 @@ class ToDo extends React.Component {
           <button>Add Task</button>
         </form>
         <ul>
-            {console.log(this.state.todos)}
+           
           {this.state.todos.map((todo, i) => {
+            <TodoItem deleteList ={this.deleteList} />
               return <li>{todo.name}</li>;
 
           })}
